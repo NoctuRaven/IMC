@@ -1,6 +1,6 @@
 # flutter_imc
 
-App para calculo de IMC(proporção entre massa corporal e altura)
+App para calculo de IMC(Índice de Massa Corporal).
 
 ## Fearures
 
