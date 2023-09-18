@@ -21,7 +21,7 @@ App para calculo de IMC(proporção entre massa corporal e altura)
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/6.png?raw=true" width="350">
 </p>
 
-## Tratamento de erro
+## Tratamento de exceções
 - Aceita apenas valores numéricos
 - Não aceita valores nulos
 <p align="center">
