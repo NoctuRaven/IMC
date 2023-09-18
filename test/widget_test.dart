@@ -6,25 +6,33 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_imc/controller/home_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_imc/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  Controller controllerTest = Controller();
+  test('Testar niveis de IMC', () {
+    Map<double, String> valueTest = {
+      16: 'Muito abaixo do peso',
+      18: 'Abaixo do peso',
+      22: 'Peso ideal',
+      26: 'Acima do peso',
+      32.7: 'Obesidade I',
+      37: 'Obesidade II (severa)',
+      50: 'Obesidade III (mórbida)',
+    };
+    valueTest.forEach((key, value) {
+      controllerTest.getResponse(key);
+      expect(controllerTest.getResponse(key), value);
+    });
+  });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('Testar filtro do formulário', () {
+    expect(controllerTest.pesoValidator('ahe7525d'), isNotNull);
+    expect(controllerTest.pesoValidator('60'), null);
+    expect(controllerTest.alturaValidator('aaaaa7585'), isNotNull);
+    expect(controllerTest.alturaValidator('1.70'), null);
   });
 }

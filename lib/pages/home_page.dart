@@ -78,30 +78,14 @@ class _HomePageState extends State<HomePage> {
                     onSaved: (newValue) {
                       controller.peso = double.tryParse(newValue!);
                     },
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Insira o valor do peso";
-                      } else if (num.tryParse(value) == null) {
-                        return "Apenas valores numéricos são permitidos";
-                      } else {
-                        return null;
-                      }
-                    },
+                    validator: controller.pesoValidator,
                     decoration: const InputDecoration(hintText: "Peso:"),
                   ),
                   TextFormField(
                     onSaved: (newValue) {
                       controller.altura = double.tryParse(newValue!);
                     },
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Insira o valor da altura";
-                      } else if (num.tryParse(value) == null) {
-                        return "Apenas valores numéricos são permitidos";
-                      } else {
-                        return null;
-                      }
-                    },
+                    validator: controller.alturaValidator,
                     decoration: const InputDecoration(hintText: "Altura:"),
                   ),
                 ],

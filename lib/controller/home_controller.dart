@@ -25,6 +25,10 @@ class Controller {
 
   getIMC() {
     imcValue = peso! / (altura! * altura!);
+    getResponse(imcValue);
+  }
+
+  getResponse(double imcValue) {
     if (imcValue < 17) {
       pesoResponse = Response.muitoAbaixo;
       stringResponse = 'Muito abaixo do peso';
@@ -47,6 +51,7 @@ class Controller {
       pesoResponse = Response.muitoSubrepeso;
       stringResponse = 'Obesidade III (mórbida)';
     }
+    return stringResponse;
   }
 
   String getReaction() {
@@ -63,6 +68,26 @@ class Controller {
         return 'assets\\images\\triste.png';
       default:
         return 'assets\\images\\balanca.png';
+    }
+  }
+
+  String? pesoValidator(value) {
+    if (value!.isEmpty) {
+      return "Insira o valor do peso";
+    } else if (num.tryParse(value) == null) {
+      return "Apenas valores numéricos são permitidos";
+    } else {
+      return null;
+    }
+  }
+
+  String? alturaValidator(value) {
+    if (value!.isEmpty) {
+      return "Insira o valor do altura";
+    } else if (num.tryParse(value) == null) {
+      return "Apenas valores numéricos são permitidos";
+    } else {
+      return null;
     }
   }
 }
