@@ -19,6 +19,12 @@ App para calculo de IMC(proporção entre massa corporal e altura)
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/4.png?raw=true" width="350">
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/5.png?raw=true" width="350">
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/6.png?raw=true" width="350">
+</p>
+
+## Tratamento de erro
+- Aceita apenas valores numéricos
+- Não aceita valores nulos
+<p align="center">
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/7.png?raw=true" width="350">
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/8.png?raw=true" width="350">
 </p>
