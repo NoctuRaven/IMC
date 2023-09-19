@@ -35,34 +35,56 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            height: 200,
-            width: 200,
-            child: Image.asset(controller.getReaction()),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Text(
-            controller.imcValue.toStringAsFixed(2),
-            style: const TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: SizedBox(
-                height: 20,
-                width: 250,
-                child: ColoredBarWidget(
-                  response: controller.pesoResponse,
-                )),
+          Container(
+            padding: EdgeInsets.all(10),
+            width: 300,
+            decoration: BoxDecoration(
+              border: Border.all(width: 2.5),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: Image.asset(controller.getReaction()),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  controller.imcValue.toStringAsFixed(2),
+                  style: const TextStyle(
+                      fontSize: 60, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                      height: 20,
+                      width: 250,
+                      child: ColoredBarWidget(
+                        response: controller.pesoResponse,
+                      )),
+                ),
+              ],
+            ),
           ),
           const SizedBox(
             height: 20,
           ),
           Text(controller.stringResponse),
+          Visibility(
+            visible: controller.pessoa.getName() != null,
+            replacement: Container(),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                  'Olá ${controller.pessoa.getName()}, este é o resultado do seu IMC !'),
+            ),
+          ),
           Container(
             margin: const EdgeInsets.all(30),
             padding: const EdgeInsets.all(8.0),
@@ -76,14 +98,21 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   TextFormField(
                     onSaved: (newValue) {
-                      controller.peso = double.tryParse(newValue!);
+                      controller.pessoa.setName(newValue!);
+                    },
+                    validator: controller.nameValidator,
+                    decoration: const InputDecoration(hintText: "Name:"),
+                  ),
+                  TextFormField(
+                    onSaved: (newValue) {
+                      controller.pessoa.setPeso(double.tryParse(newValue!)!);
                     },
                     validator: controller.pesoValidator,
                     decoration: const InputDecoration(hintText: "Peso:"),
                   ),
                   TextFormField(
                     onSaved: (newValue) {
-                      controller.altura = double.tryParse(newValue!);
+                      controller.pessoa.setAltura(double.tryParse(newValue!)!);
                     },
                     validator: controller.alturaValidator,
                     decoration: const InputDecoration(hintText: "Altura:"),

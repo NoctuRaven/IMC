@@ -1,12 +1,16 @@
 class Pessoa {
-  String _nome;
-  double _peso;
-  double _altura;
-  Pessoa(
-    this._nome,
-    this._peso,
-    this._altura,
-  );
+  String? _nome;
+  double? _peso;
+  double? _altura;
+  Pessoa({
+    String? nome,
+    double? peso,
+    double? altura,
+  }) {
+    _nome = nome;
+    _peso = peso;
+    _altura = altura;
+  }
 
   getName() {
     return _nome;

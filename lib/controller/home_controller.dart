@@ -1,18 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import '../model/pessoa.dart';
+
 enum Response { muitoAbaixo, abaixo, ideial, sobrepeso, muitoSubrepeso }
 
 class Controller {
   double imcValue = 0.00;
   Response? pesoResponse;
-  double? peso;
-  double? altura;
   String stringResponse = 'Insira os valores no campo abaixo';
+  Pessoa pessoa = Pessoa();
 
   Controller({
     this.pesoResponse,
-    this.peso,
-    this.altura,
   });
 
 //   Abaixo de 17	Muito abaixo do peso
@@ -24,7 +23,10 @@ class Controller {
 // Acima de 40	Obesidade III (mórbida)
 
   getIMC() {
-    imcValue = peso! / (altura! * altura!);
+    if (pessoa != null) {
+      imcValue =
+          pessoa.getPeso()! / (pessoa.getAltura()! * pessoa.getAltura()!);
+    }
     getResponse(imcValue);
   }
 
@@ -86,6 +88,14 @@ class Controller {
       return "Insira o valor do altura";
     } else if (num.tryParse(value) == null) {
       return "Apenas valores numéricos são permitidos";
+    } else {
+      return null;
+    }
+  }
+
+  String? nameValidator(value) {
+    if (value!.isEmpty) {
+      return "Insira o seu nome";
     } else {
       return null;
     }
