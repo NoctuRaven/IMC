@@ -29,3 +29,6 @@ App para calculo de IMC(Índice de Massa Corporal).
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/9.png?raw=true" width="350">
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/8.png?raw=true" width="350">
 </p>
+
+## Testes
+https://github.com/NoctuRaven/IMC/blob/main/test/widget_test.dart
