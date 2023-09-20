@@ -9,6 +9,7 @@ class Controller {
   Response? pesoResponse;
   String stringResponse = 'Insira os valores no campo abaixo';
   Pessoa pessoa = Pessoa();
+  List<Pessoa> pessoaList = [];
 
   Controller({
     this.pesoResponse,
@@ -28,6 +29,10 @@ class Controller {
           pessoa.getPeso()! / (pessoa.getAltura()! * pessoa.getAltura()!);
     }
     getResponse(imcValue);
+  }
+
+  addPessoaToList() {
+    pessoaList.add(pessoa);
   }
 
   getResponse(double imcValue) {
