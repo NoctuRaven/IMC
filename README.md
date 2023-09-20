@@ -20,6 +20,7 @@ App para calculo de IMC(Índice de Massa Corporal).
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/5.png?raw=true" width="350">
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/6.png?raw=true" width="350">
    <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/7.png?raw=true" width="350">
+    <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/10.png?raw=true" width="350">
 </p>
 
 ## Tratamento de exceções
