@@ -19,12 +19,16 @@ App para calculo de IMC(Índice de Massa Corporal).
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/4.png?raw=true" width="350">
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/5.png?raw=true" width="350">
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/6.png?raw=true" width="350">
+   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/7.png?raw=true" width="350">
 </p>
 
 ## Tratamento de exceções
 - Aceita apenas valores numéricos
 - Não aceita valores nulos
 <p align="center">
-  <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/7.png?raw=true" width="350">
+  <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/9.png?raw=true" width="350">
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/8.png?raw=true" width="350">
 </p>
+
+## Testes
+https://github.com/NoctuRaven/IMC/blob/main/test/widget_test.dart
