@@ -32,7 +32,7 @@ class Controller {
   }
 
   addPessoaToList() {
-    pessoaList.add(pessoa);
+    pessoaList.add(pessoa.copyWith());
   }
 
   getResponse(double imcValue) {

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class Pessoa {
   String? _nome;
   double? _peso;
@@ -34,5 +35,17 @@ class Pessoa {
 
   setAltura(double altura) {
     _altura = altura;
+  }
+
+  Pessoa copyWith({
+    String? nome,
+    double? peso,
+    double? altura,
+  }) {
+    return Pessoa(
+      nome: _nome ?? this._nome,
+      peso: _peso ?? this._peso,
+      altura: _altura ?? this._altura,
+    );
   }
 }
