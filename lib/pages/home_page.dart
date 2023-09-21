@@ -139,15 +139,18 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(10),
             width: 300,
             decoration: BoxDecoration(
-              border: Border.all(width: 2.5),
-              borderRadius: BorderRadius.circular(5),
-            ),
+                border: Border.all(width: 2.5),
+                borderRadius: BorderRadius.circular(15),
+                color: controller.getColor()),
             child: Column(
               children: [
                 SizedBox(
                   height: 200,
                   width: 200,
-                  child: Image.asset(controller.getReaction()),
+                  child: Image.asset(
+                    controller.getReaction(),
+                    color: Colors.white,
+                  ),
                 ),
                 const SizedBox(
                   height: 8,
@@ -155,18 +158,27 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   controller.imcValue.toStringAsFixed(2),
                   style: const TextStyle(
-                      fontSize: 60, fontWeight: FontWeight.bold),
+                      fontSize: 60,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: SizedBox(
-                      height: 20,
-                      width: 250,
-                      child: ColoredBarWidget(
-                        response: controller.pesoResponse,
+                  child: Container(
+                      height: 25,
+                      width: 266,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: ColoredBarWidget(
+                          response: controller.pesoResponse,
+                        ),
                       )),
                 ),
               ],

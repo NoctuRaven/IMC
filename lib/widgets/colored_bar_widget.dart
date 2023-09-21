@@ -76,6 +76,7 @@ class ColoredBarWidget extends StatelessWidget {
         ),
         // 15,65,115,165,215
         Positioned(
+          top: 2,
           left: getReaction(),
           child: Container(
             width: 20,

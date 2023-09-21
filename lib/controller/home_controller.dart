@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:flutter/material.dart';
+
 import '../model/pessoa.dart';
 
 enum Response { muitoAbaixo, abaixo, ideial, sobrepeso, muitoSubrepeso }
@@ -33,6 +35,23 @@ class Controller {
 
   addPessoaToList() {
     pessoaList.add(pessoa.copyWith());
+  }
+
+  Color getColor() {
+    switch (pesoResponse) {
+      case Response.muitoAbaixo:
+        return Colors.red;
+      case Response.abaixo:
+        return Colors.yellow;
+      case Response.ideial:
+        return Colors.green;
+      case Response.sobrepeso:
+        return Colors.yellow;
+      case Response.muitoSubrepeso:
+        return Colors.red;
+      default:
+        return Colors.blue;
+    }
   }
 
   getResponse(double imcValue) {
