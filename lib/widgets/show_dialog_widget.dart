@@ -13,7 +13,7 @@ class _ShowDialogWidgetState extends State<ShowDialogWidget> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Histórico de IMC'),
+      title: const Text('Histórico'),
       content: Visibility(
         visible: widget.controller.pessoaList.isEmpty,
         replacement: SizedBox(
@@ -27,13 +27,31 @@ class _ShowDialogWidgetState extends State<ShowDialogWidget> {
             child: ListView.builder(
               itemCount: widget.controller.pessoaList.length,
               itemBuilder: (context, index) {
-                return Stack(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                return Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Column(
                         children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            height: 35,
+                            decoration: BoxDecoration(color: Colors.black),
+                            child: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  widget.controller.sharedDatabase.removePessoa(
+                                      widget.controller.pessoaList[index]);
+                                  widget.controller.getListPessoa();
+                                });
+                              },
+                              icon: Icon(
+                                Icons.cancel,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                           Container(
                             alignment: Alignment.center,
                             height: 50,
@@ -44,63 +62,49 @@ class _ShowDialogWidgetState extends State<ShowDialogWidget> {
                             child: Text(
                                 widget.controller.pessoaList[index].getName()),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  alignment: Alignment.centerLeft,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(),
-                                  ),
-                                  child: Text(
-                                      " Altura: ${widget.controller.pessoaList[index].getAltura()}"),
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(),
-                                    ),
-                                    child: Text(
-                                        " Altura: ${widget.controller.pessoaList[index].getPeso()}")),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            height: 50,
-                            width: double.maxFinite,
-                            decoration: BoxDecoration(
-                              border: Border.all(),
-                            ),
-                            child: Text(
-                                "IMC: ${widget.controller.pessoaList[index].getIMC().toStringAsFixed(2)}"),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          )
                         ],
                       ),
-                    ),
-                    Positioned(
-                      top: 10,
-                      left: 10,
-                      child: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            widget.controller.sharedDatabase.removePessoa(
-                                widget.controller.pessoaList[index]);
-                            widget.controller.getListPessoa();
-                          });
-                        },
-                        icon: Icon(Icons.cancel),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                              ),
+                              child: Text(
+                                  " Altura: ${widget.controller.pessoaList[index].getAltura()}"),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                                alignment: Alignment.centerLeft,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  border: Border.all(),
+                                ),
+                                child: Text(
+                                    " Altura: ${widget.controller.pessoaList[index].getPeso()}")),
+                          ),
+                        ],
                       ),
-                    )
-                  ],
+                      Container(
+                        alignment: Alignment.center,
+                        height: 50,
+                        width: double.maxFinite,
+                        decoration: BoxDecoration(
+                          border: Border.all(),
+                        ),
+                        child: Text(
+                            "IMC: ${widget.controller.pessoaList[index].getIMC().toStringAsFixed(2)}"),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      )
+                    ],
+                  ),
                 );
               },
             ),
