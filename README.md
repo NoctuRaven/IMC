@@ -26,8 +26,8 @@ App para calculo de IMC(Índice de Massa Corporal).
 </p>
 
 ## Tratamento de exceções
-- Aceita apenas valores numéricos
-- Não aceita valores nulos
+- Os campos "Altura" e "Peso" aceitam apenas valores numéricos.
+- Nenhum campo aceita valores nulos.
 <p align="center">
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/12.png?raw=true" width="350">
   <img src="https://github.com/NoctuRaven/IMC/blob/main/assets/images/print/13.png?raw=true" width="350">
