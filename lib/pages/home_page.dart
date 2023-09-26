@@ -55,120 +55,126 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            width: 300,
-            decoration: BoxDecoration(
-                border: Border.all(width: 2.5),
-                borderRadius: BorderRadius.circular(15),
-                color: controller.getColor()),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: Image.asset(
-                    controller.getReaction(),
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  controller.pessoa.getIMC().toStringAsFixed(2),
-                  style: const TextStyle(
-                      fontSize: 60,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Container(
-                      height: 25,
-                      width: 266,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: ColoredBarWidget(
-                          response: controller.pesoResponse,
-                        ),
-                      )),
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 30,
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Text(controller.stringResponse),
-          Visibility(
-            visible: controller.pessoa.getName() != null,
-            replacement: Container(),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                  'Olá ${controller.pessoa.getName()}, este é o resultado do seu IMC !'),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(30),
-            padding: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(width: 2),
-            ),
-            child: Form(
-              key: _form,
+            Container(
+              padding: const EdgeInsets.all(10),
+              width: 300,
+              decoration: BoxDecoration(
+                  border: Border.all(width: 2.5),
+                  borderRadius: BorderRadius.circular(15),
+                  color: controller.getColor()),
               child: Column(
                 children: [
-                  TextFormField(
-                    onSaved: (newValue) {
-                      controller.pessoa.setName(newValue!);
-                    },
-                    validator: controller.nameValidator,
-                    decoration: const InputDecoration(hintText: "Name:"),
+                  SizedBox(
+                    height: 200,
+                    width: 200,
+                    child: Image.asset(
+                      controller.getReaction(),
+                      color: Colors.white,
+                    ),
                   ),
-                  TextFormField(
-                    onSaved: (newValue) {
-                      controller.pessoa.setPeso(double.tryParse(newValue!)!);
-                    },
-                    validator: controller.pesoValidator,
-                    decoration: const InputDecoration(hintText: "Peso:"),
+                  const SizedBox(
+                    height: 8,
                   ),
-                  TextFormField(
-                    onSaved: (newValue) {
-                      controller.pessoa.setAltura(double.tryParse(newValue!)!);
-                    },
-                    validator: controller.alturaValidator,
-                    decoration: const InputDecoration(hintText: "Altura:"),
+                  Text(
+                    controller.pessoa.getIMC().toStringAsFixed(2),
+                    style: const TextStyle(
+                        fontSize: 60,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                        height: 25,
+                        width: 266,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: ColoredBarWidget(
+                            response: controller.pesoResponse,
+                          ),
+                        )),
                   ),
                 ],
               ),
             ),
-          ),
-          ElevatedButton(
-              onPressed: () {
-                if (_form.currentState!.validate()) {
-                  _form.currentState!.save();
-                  controller.addPessoaToList();
-                  setState(() {
-                    controller.getIMC();
-                  });
-                }
-              },
-              child: const Text('Calcular IMC'))
-        ],
+            const SizedBox(
+              height: 20,
+            ),
+            Text(controller.stringResponse),
+            Visibility(
+              visible: controller.pessoa.getName() != null,
+              replacement: Container(),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                    'Olá ${controller.pessoa.getName()}, este é o resultado do seu IMC !'),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(30),
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(width: 2),
+              ),
+              child: Form(
+                key: _form,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      onSaved: (newValue) {
+                        controller.pessoa.setName(newValue!);
+                      },
+                      validator: controller.nameValidator,
+                      decoration: const InputDecoration(hintText: "Name:"),
+                    ),
+                    TextFormField(
+                      onSaved: (newValue) {
+                        controller.pessoa.setPeso(double.tryParse(newValue!)!);
+                      },
+                      validator: controller.pesoValidator,
+                      decoration: const InputDecoration(hintText: "Peso:"),
+                    ),
+                    TextFormField(
+                      onSaved: (newValue) {
+                        controller.pessoa
+                            .setAltura(double.tryParse(newValue!)!);
+                      },
+                      validator: controller.alturaValidator,
+                      decoration: const InputDecoration(hintText: "Altura:"),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  if (_form.currentState!.validate()) {
+                    _form.currentState!.save();
+                    controller.addPessoaToList();
+                    setState(() {
+                      controller.getIMC();
+                    });
+                  }
+                },
+                child: const Text('Calcular IMC'))
+          ],
+        ),
       ),
     );
   }
