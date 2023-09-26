@@ -1,21 +1,26 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
+import 'package:flutter_imc/data/database/shered_database.dart';
 
 import '../model/pessoa.dart';
 
 enum Response { muitoAbaixo, abaixo, ideial, sobrepeso, muitoSubrepeso }
 
 class Controller {
-  double imcValue = 0.00;
+  final SharedDatabase sharedDatabase;
   Response? pesoResponse;
   String stringResponse = 'Insira os valores no campo abaixo';
   Pessoa pessoa = Pessoa();
   List<Pessoa> pessoaList = [];
 
-  Controller({
-    this.pesoResponse,
-  });
+  Controller({this.pesoResponse, required this.sharedDatabase}) {
+    getListPessoa();
+  }
+
+  getListPessoa() async {
+    pessoaList = await sharedDatabase.getListPessoa() ?? [];
+  }
 
 //   Abaixo de 17	Muito abaixo do peso
 // Entre 17 e 18,49	Abaixo do peso
@@ -26,15 +31,12 @@ class Controller {
 // Acima de 40	Obesidade III (mórbida)
 
   getIMC() {
-    if (pessoa != null) {
-      imcValue =
-          pessoa.getPeso()! / (pessoa.getAltura()! * pessoa.getAltura()!);
-    }
-    getResponse(imcValue);
+    getResponse(pessoa.getIMC());
   }
 
   addPessoaToList() {
     pessoaList.add(pessoa.copyWith());
+    sharedDatabase.setPessoa(pessoa.copyWith());
   }
 
   Color getColor() {

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_imc/controller/home_controller.dart';
+import 'package:flutter_imc/data/database/shered_database.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_imc/main.dart';
 
 void main() {
-  Controller controllerTest = Controller();
+  Controller controllerTest = Controller(sharedDatabase: SharedDatabase());
   test('Testar niveis de IMC', () {
     Map<double, String> valueTest = {
       16: 'Muito abaixo do peso',

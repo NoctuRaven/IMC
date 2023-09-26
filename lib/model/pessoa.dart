@@ -25,6 +25,14 @@ class Pessoa {
     return _altura;
   }
 
+  double getIMC() {
+    if (_peso != null && _altura != null) {
+      return _peso! / (_altura! * _altura!);
+    } else {
+      return 0.00;
+    }
+  }
+
   setName(String nome) {
     _nome = nome;
   }
