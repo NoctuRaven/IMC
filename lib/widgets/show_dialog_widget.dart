@@ -86,7 +86,7 @@ class _ShowDialogWidgetState extends State<ShowDialogWidget> {
                                   border: Border.all(),
                                 ),
                                 child: Text(
-                                    " Altura: ${widget.controller.pessoaList[index].getPeso()}")),
+                                    " Peso: ${widget.controller.pessoaList[index].getPeso()}")),
                           ),
                         ],
                       ),
